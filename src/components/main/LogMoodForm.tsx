@@ -40,9 +40,6 @@ export default function LogMoodForm({ onSubmit }: { onSubmit: (moodData: any) =>
         
         if(currentStep === 4) console.log(feelings);
     }
-    const handlePreviousStep = () => {
-        setCurrentStep(currentStep - 1);
-    }
 
   return (
     <div className='p-8 pt-2'>
