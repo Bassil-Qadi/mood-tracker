@@ -6,6 +6,7 @@ import Modal from "../components/UI/Modal";
 import moment from "moment";
 import { useState, useEffect, useMemo } from "react";
 import LogMoodForm from "../components/main/LogMoodForm";
+import UpdateProfileForm from "../components/main/UpdateProfileForm";
 import { userModeAPI } from "../utils/api";
 import { toast } from "react-toastify";
 import Chart from "../components/UI/Chart";
@@ -49,6 +50,7 @@ function HomePage() {
   const [userModeData, setUserModeData] = useState<any>(null);
   const [averageMood, setAverageMood] = useState(0);
   const [averageSleep, setAverageSleep] = useState(0);  
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
 
 
   // Map sleep hour ranges to numeric values for Y-axis
@@ -228,6 +230,15 @@ function HomePage() {
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
+
+  const handleSettingsModalOpen = () => {
+    setIsSettingsModalOpen(true);
+  }
+
+  const handleSettingsModalClose = () => {
+    setIsSettingsModalOpen(false);
+  }
+
   const handleLogout = async () => {
     await logout();
     navigate("/login");
@@ -294,6 +305,9 @@ function HomePage() {
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
         <LogMoodForm onSubmit={handleSubmit} />
       </Modal>
+      <Modal isOpen={isSettingsModalOpen} onClose={handleSettingsModalClose}>
+          <UpdateProfileForm />
+      </Modal>
       <div className="min-h-screen bg-gray-50">
         {/* Navigation */}
         <nav className="bg-white shadow-sm">
@@ -327,7 +341,7 @@ function HomePage() {
                       profileImage: user.profileImage || "",
                     }}
                     onLogout={handleLogout}
-                    onSettings={() => {}}
+                    onSettings={handleSettingsModalOpen}
                   />
                 )}
               </div>

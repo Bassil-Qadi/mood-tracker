@@ -115,6 +115,12 @@ export const userModeAPI = {
       method: 'GET',
     });
   },
+  updateUserProfile: async (userData: { userId: string, name: string }) => {
+    return fetchAPI('/user/update', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+    });
+  }
 };
 
 export default fetchAPI;
