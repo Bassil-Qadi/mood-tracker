@@ -30,7 +30,7 @@ const DailyUserMood = ({userModeData}: {userModeData: any}) => {
         <img 
           src={moodIconMap[userModeData?.overallMood as keyof typeof moodIconMap]} 
           alt={moodMap[userModeData?.overallMood as keyof typeof moodMap]} 
-          className="absolute right-5 top-1/2 -translate-y-1/2 w-64 h-64 pointer-events-none"
+          className="absolute right-5 top-1/2 -translate-y-1/2 sm:w-64 sm:h-64 pointer-events-none"
         />
         <div className="relative z-10">
           <h3 className="text-2xl font-semibold text-gray-500 mb-1">I'm feeling</h3>
