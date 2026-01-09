@@ -1,19 +1,22 @@
 import { useState } from "react";
-import { userModeAPI } from "../../utils/api";
+import { authAPI } from "../../utils/api";
 import { useAuth } from "../../context/authContext";
 import { toast } from "react-toastify";
 
-export default function UpdateProfileForm() {
+export default function UpdateProfileForm({ handleClose }: { handleClose: () => void }) {
     const { user } = useAuth();
   const [name, setName] = useState("");
 
-  const handleSubmit  = async () => {
-    const result = await userModeAPI.updateUserProfile({ userId: user?.id || '', name });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = await authAPI.updateProfile({ userId: user?.id || '', name });
     if (result.success) {
         toast.success(result.message);
       } else {
         toast.error(result.message);
       }
+
+      handleClose();
   }
 
   return (
@@ -39,7 +42,7 @@ export default function UpdateProfileForm() {
               type="text"
               required
               className="mt-1 appearance-none bg-transparent relative block w-full px-3 py-2 border border-gray-600 rounded-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Enter your name"
+              placeholder="Enter your new name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />

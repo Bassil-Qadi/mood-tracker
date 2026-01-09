@@ -78,6 +78,7 @@ export const authAPI = {
   },
 
   updateProfile: async (userData: {
+    userId?: string,
     name?: string;
     email?: string;
     profileImage?: string;

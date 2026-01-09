@@ -124,6 +124,9 @@ function HomePage() {
               show: false,
             },
           },
+          legend: {
+            show: false,
+          },
           plotOptions: {
             bar: {
               borderRadius: 12,
@@ -184,6 +187,9 @@ function HomePage() {
           toolbar: {
             show: false,
           },
+        },
+        legend: {
+          show: false,
         },
         xaxis: {
           categories: categories,
@@ -259,6 +265,7 @@ function HomePage() {
   const getUserModeData = async () => {
     const result = await userModeAPI.getUserMode(user?.id || '');
     if (result.success) {
+      console.log(result);
       const lastItem = (result.data as any[])[(result.data as any[]).length - 1];
       if (moment(lastItem.date).format("YYYY-MM-DD") === moment().format("YYYY-MM-DD")) {
         setHasUserSubmittedData(true);
@@ -306,7 +313,7 @@ function HomePage() {
         <LogMoodForm onSubmit={handleSubmit} />
       </Modal>
       <Modal isOpen={isSettingsModalOpen} onClose={handleSettingsModalClose}>
-          <UpdateProfileForm />
+          <UpdateProfileForm handleClose={handleSettingsModalClose} />
       </Modal>
       <div className="min-h-screen bg-gray-50">
         {/* Navigation */}
