@@ -9,7 +9,7 @@ const sleepHoursOptions = [
 const TotalHoursStep = ({ sleepHours, handleSleepHoursChange } : { sleepHours: string, handleSleepHoursChange: (e: React.ChangeEvent<HTMLInputElement>) => void }) => {
     return (
         <div className='w-full'>
-            <h2 className='text-2xl font-bold mb-4'>How many hours did you sleep?</h2>
+            <h2 className='text-xl sm:text-2xl md:text-3xl font-bold mb-4'>How many hours did you sleep?</h2>
             <div className='w-full'>
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col items-center gap-6 w-full">
@@ -17,7 +17,7 @@ const TotalHoursStep = ({ sleepHours, handleSleepHoursChange } : { sleepHours: s
                         <label key={option.value} className={`flex items-center justify-between gap-2 w-full bg-white rounded-lg border border-indigo-100 border-2 p-4 ${sleepHours === option.value ? '!border-indigo-500 border-2' : ''}`}>
                             <div className='flex items-center gap-2'>
                                 <input type="radio" name="sleepHours" value={option.value} checked={sleepHours === option.value} onChange={handleSleepHoursChange} className='w-4 h-4' />
-                                <span className='text-lg font-semibold'>{option.label}</span>
+                                <span className='text-sm sm:text-base md:text-lg font-semibold'>{option.label}</span>
                             </div>
                         </label>
                     ))}

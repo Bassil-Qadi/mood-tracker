@@ -53,30 +53,30 @@ function SignUp() {
       </div>
       <div className="max-w-md w-full space-y-8 p-6 bg-white rounded-lg shadow-md">
         {step === 0 && <div>
-          <h2 className="text-start text-3xl font-bold text-gray-900">
+          <h2 className="text-start text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
             Create an account
           </h2>
-          <p className="mt-2 text-start text-sm text-gray-600">
+          <p className="mt-2 text-start text-xs sm:text-sm md:text-base text-gray-600">
             Join to track your daily mood and sleep with ease.
           </p>
         </div>}
         {step === 1 && <div>
-          <h2 className="text-start text-3xl font-bold text-gray-900">
+          <h2 className="text-start text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
             Personalize your experience
           </h2>
-          <p className="mt-2 text-start text-sm text-gray-600">
+          <p className="mt-2 text-start text-xs sm:text-sm md:text-base text-gray-600">
           Add your name and a profile picture to make Mood yours.
           </p>
         </div>}
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
          {(error || localError) && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+            <div className="bg-red-50 border border-red-200 text-xs sm:text-sm md:text-base text-red-700 px-4 py-3 rounded">
               {error || localError}
             </div>
           )}
          {step === 0 && <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-xs sm:text-sm md:text-base font-medium text-gray-700">
                 Email address
               </label>
               <input
@@ -91,7 +91,7 @@ function SignUp() {
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-xs sm:text-sm md:text-base font-medium text-gray-700">
                 Password
               </label>
               <input
@@ -108,7 +108,7 @@ function SignUp() {
           </div>}
           {step === 1 && <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="name" className="block text-xs sm:text-sm md:text-base font-medium text-gray-700">
                 Name
               </label>
               <input
@@ -123,7 +123,7 @@ function SignUp() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-xs sm:text-sm md:text-base font-medium text-gray-700 mb-3">
                 Profile picture
               </label>
               <div className="flex items-center gap-6">
@@ -162,14 +162,14 @@ function SignUp() {
                   />
                   <label
                     htmlFor="profile-picture"
-                    className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-xs sm:text-sm md:text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none cursor-pointer transition-colors"
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                     Choose photo
                   </label>
-                  <p className="mt-2 text-xs text-gray-500">
+                  <p className="mt-2 text-xs sm:text-sm text-gray-500">
                     JPG, PNG or GIF (max. 5MB)
                   </p>
                 </div>
@@ -180,7 +180,7 @@ function SignUp() {
           {step === 0 && <button
               type="button"
               onClick={handleNextStep}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-xs sm:text-sm md:text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Sign up
             </button>}
@@ -189,14 +189,14 @@ function SignUp() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-xs sm:text-sm md:text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? 'Creating account...' : 'Start tracking'}
               </button>
             )}
 
           </div>
-          <div className="text-center text-sm text-gray-600">
+          <div className="text-center text-xs sm:text-sm md:text-base text-gray-600">
             Already have an account?{' '}
             <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">
               Sign in

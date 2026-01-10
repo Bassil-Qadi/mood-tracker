@@ -62,7 +62,7 @@ const Modal: React.FC<ModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between p-3 pb-1">
           {title ? (
-            <h2 id="modal-title" className="text-xl font-semibold text-gray-900">
+            <h2 id="modal-title" className="text-base sm:text-lg md:text-xl font-semibold text-gray-900">
               {title}
             </h2>
           ) : (

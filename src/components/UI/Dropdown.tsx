@@ -57,12 +57,12 @@ const Dropdown: React.FC<DropdownProps> = ({ user, onLogout, onSettings }) => {
       {open && (
         <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg border z-10">
           <div className="px-4 py-3 border-b">
-            <div className="font-semibold text-gray-900">{user.name}</div>
-            <div className="text-sm text-gray-500">{user.email}</div>
+            <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-900">{user.name}</div>
+            <div className="text-xs sm:text-sm md:text-base text-gray-500">{user.email}</div>
           </div>
           <div className="py-1">
             <button
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="w-full text-left px-4 py-2 text-xs sm:text-sm md:text-base text-gray-700 hover:bg-gray-100"
               onClick={(e) => {
                 setOpen(false);
                 onSettings();
@@ -72,7 +72,7 @@ const Dropdown: React.FC<DropdownProps> = ({ user, onLogout, onSettings }) => {
               Settings
             </button>
             <button
-              className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+              className="w-full text-left px-4 py-2 text-xs sm:text-sm md:text-base text-red-600 hover:bg-gray-100"
               onClick={(e) => {
                 setOpen(false);
                 onLogout();

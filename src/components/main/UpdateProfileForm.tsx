@@ -22,8 +22,8 @@ export default function UpdateProfileForm({ handleClose }: { handleClose: () => 
   return (
     <div className="p-8 pt-2">
       <div className="update-form__header">
-        <h2 className="text-3xl font-bold mb-3">Update your profile</h2>
-        <p className="text-gray-500">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3">Update your profile</h2>
+        <p className="text-xs sm:text-sm md:text-base text-gray-500">
           Personalize your account with your name and photo.
         </p>
       </div>
@@ -32,7 +32,7 @@ export default function UpdateProfileForm({ handleClose }: { handleClose: () => 
           <div>
             <label
               htmlFor="name"
-              className="block text-lg font-medium text-gray-700"
+              className="block text-sm sm:text-base md:text-lg font-medium text-gray-700"
             >
               Name
             </label>
@@ -49,7 +49,7 @@ export default function UpdateProfileForm({ handleClose }: { handleClose: () => 
           </div>
           <button
             type="submit"
-            className="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed mt-8"
+            className="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-sm text-sm sm:text-base md:text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed mt-8"
           >
             Save changes
           </button>

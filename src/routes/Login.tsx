@@ -1,60 +1,65 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/authContext';
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
 function Login() {
-
   const { login, error, isAuthenticated } = useAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [localError, setLocalError] = useState<string | null>(null);
   const router = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated) {
-      router('/home');
+      router("/home");
     }
   }, [isAuthenticated, router]);
-  
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLocalError(null);
     setIsLoading(true);
-    
+
     try {
       await login(email, password);
-      router('/home');
+      router("/home");
     } catch (err) {
-      setLocalError(err instanceof Error ? err.message : 'Login failed');
+      setLocalError(err instanceof Error ? err.message : "Login failed");
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
         <div>
-          <h2 className="text-center text-3xl font-bold text-gray-900">
+          <h2 className="text-center text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
             Sign in to your account
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Don't have an account?{' '}
-            <Link to="/signup" className="font-medium text-blue-600 hover:text-blue-500">
+          <p className="mt-2 text-center text-xs sm:text-sm md:text-base text-gray-600">
+            Don't have an account?{" "}
+            <Link
+              to="/signup"
+              className="font-medium text-blue-600 hover:text-blue-500"
+            >
               Sign up
             </Link>
           </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {(error || localError) && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+            <div className="bg-red-50 border border-red-200 text-xs sm:text-sm md:text-base text-red-700 px-4 py-3 rounded">
               {error || localError}
             </div>
           )}
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-xs sm:text-sm md:text-base font-medium text-gray-700"
+              >
                 Email address
               </label>
               <input
@@ -69,7 +74,10 @@ function Login() {
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-xs sm:text-sm md:text-base font-medium text-gray-700"
+              >
                 Password
               </label>
               <input
@@ -93,13 +101,19 @@ function Login() {
                 type="checkbox"
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+              <label
+                htmlFor="remember-me"
+                className="ml-2 block text-xs sm:text-sm md:text-base text-gray-900"
+              >
                 Remember me
               </label>
             </div>
 
-            <div className="text-sm">
-              <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+            <div className="text-xs sm:text-sm md:text-base">
+              <a
+                href="#"
+                className="font-medium text-blue-600 hover:text-blue-500"
+              >
                 Forgot password?
               </a>
             </div>
@@ -109,9 +123,9 @@ function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-xs sm:text-sm md:text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? 'Signing in...' : 'Sign in'}
+              {isLoading ? "Signing in..." : "Sign in"}
             </button>
           </div>
         </form>
@@ -121,4 +135,3 @@ function Login() {
 }
 
 export default Login;
-

@@ -328,13 +328,13 @@ function HomePage() {
                   <div>
                     <Link
                       to="/login"
-                      className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                      className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-xs sm:text-sm md:text-base font-medium"
                     >
                       Login
                     </Link>
                     <Link
                       to="/signup"
-                      className="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium"
+                      className="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-xs sm:text-sm md:text-base font-medium"
                     >
                       Sign Up
                     </Link>
@@ -359,13 +359,13 @@ function HomePage() {
         {/* Hero Section */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center mb-8">
-            <p className="mt-3 max-w-md font-bold mx-auto text-base text-indigo-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            <p className="mt-3 max-w-md font-bold mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-indigo-500 md:mt-5 md:max-w-3xl">
               Hello, {user?.name}!
             </p>
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl my-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 my-4">
               How are you feeling today?
             </h2>
-            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl font-semibold">
+            <p className="mt-3 max-w-md mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-500 md:mt-5 md:max-w-3xl font-semibold">
               {moment().format("dddd, MMMM Do, YYYY")}
             </p>
           </div>
@@ -374,7 +374,7 @@ function HomePage() {
           { !hasUserSubmittedData && <div className="mt-16 mb-8">
             <div className="flex justify-center">
               <button
-                className="bg-indigo-600 text-white px-6 py-4 rounded-lg text-lg font-semibold"
+                className="bg-indigo-600 text-white px-6 py-4 rounded-lg text-sm sm:text-base md:text-lg font-semibold"
                 onClick={handleModalOpen}
               >
                 Log today's mood
@@ -389,23 +389,23 @@ function HomePage() {
           <div className="md:w-1/3 w-full bg-white rounded-lg shadow-sm p-6">
             {/* Left column content */}
            <div className="flex flex-col gap-2 mb-8">
-           <h3 className="text-lg font-semibold mb-2">Average Mood <small className="text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
+           <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Average Mood <small className="text-xs sm:text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
             <div className="flex items-start justify-between flex-col gap-2 bg-indigo-50 p-8 rounded-xl">
-                <h2 className="text-2xl font-bold">Keep tracking!</h2>
-                <h6 className="text-sm text-gray-500">Log 5 check-ins to see your average mood.</h6>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Keep tracking!</h2>
+                <h6 className="text-xs sm:text-sm md:text-base text-gray-500">Log 5 check-ins to see your average mood.</h6>
             </div>
            </div>
            <div className="flex flex-col gap-2">
-           <h3 className="text-lg font-semibold mb-2">Average Sleep <small className="text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
+           <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Average Sleep <small className="text-xs sm:text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
             <div className="flex items-start justify-between flex-col gap-2 bg-indigo-50 p-8 rounded-xl">
-                <h2 className="text-2xl font-bold">Not enough data yet!</h2>
-                <h6 className="text-sm text-gray-500">Track 5 nights to view average sleep.</h6>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Not enough data yet!</h2>
+                <h6 className="text-xs sm:text-sm md:text-base text-gray-500">Track 5 nights to view average sleep.</h6>
             </div>
            </div>
           </div>
           <div className="md:w-2/3 w-full bg-white rounded-lg shadow-sm p-6">
             {/* Right column content */}
-            <h3 className="text-3xl font-semibold mb-2">Mood and sleep trends</h3>
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2">Mood and sleep trends</h3>
             <Chart data={chartSeries} options={chartOptions} />
           </div>
         </div>}
@@ -413,32 +413,32 @@ function HomePage() {
           <div className="md:w-1/3 w-full bg-white rounded-lg shadow-sm p-6">
             {/* Left column content */}
            <div className="flex flex-col gap-2 mb-8">
-           <h3 className="text-lg font-semibold mb-2">Average Mood <small className="text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
+           <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Average Mood <small className="text-xs sm:text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
             <div 
               className="flex items-start justify-between flex-col gap-2 p-8 rounded-xl"
               style={{ backgroundColor: moodColorMap[averageMood as unknown as keyof typeof moodColorMap] }}
             >
               <div className="flex items-center gap-4 mb-2">
                 <img src={moodIconMap[averageMood as unknown as keyof typeof moodIconMap]} alt={moodMap[averageMood as unknown as keyof typeof moodMap]} className="w-6 h-6" />
-                <h2 className="text-2xl font-bold">{moodMap[averageMood as unknown as keyof typeof moodMap]}</h2>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">{moodMap[averageMood as unknown as keyof typeof moodMap]}</h2>
               </div>
-                <h6 className="text-sm">Log 5 check-ins to see your average mood.</h6>
+                <h6 className="text-xs sm:text-sm md:text-base">Log 5 check-ins to see your average mood.</h6>
             </div>
            </div>
            <div className="flex flex-col gap-2">
-            <h3 className="text-lg font-semibold mb-2">Average Sleep <small className="text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Average Sleep <small className="text-xs sm:text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
               <div className="flex items-start justify-between flex-col gap-2 bg-indigo-500 p-8 rounded-xl">
                   <div className="flex items-center gap-4 mb-2">
                     <img src={iconSleep} alt="Sleep" className="w-6 h-6" />
-                    <h2 className="text-2xl font-bold text-white">{averageSleep} Hours</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{averageSleep} Hours</h2>
                   </div>
-                  <h6 className="text-sm text-gray-200">Track 5 nights to view average sleep.</h6>
+                  <h6 className="text-xs sm:text-sm md:text-base text-gray-200">Track 5 nights to view average sleep.</h6>
               </div>
            </div>
           </div>
           <div className="md:w-2/3 w-full bg-white rounded-lg shadow-sm p-6">
             {/* Right column content */}
-            <h3 className="text-3xl font-semibold mb-2">Mood and sleep trends</h3>
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2">Mood and sleep trends</h3>
             <Chart data={chartSeries} options={chartOptions} />
           </div>
         </div>}
