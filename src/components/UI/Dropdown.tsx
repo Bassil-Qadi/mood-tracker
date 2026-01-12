@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import IconSettings from "../../assets/images/icon-settings.svg";
 import IconLogout from "../../assets/images/icon-logout.svg";
+import AvaterPlaceholder from "../../assets/images/avatar-placeholder.svg";
 
 interface UserProps {
   name: string;
@@ -43,7 +44,7 @@ const Dropdown: React.FC<DropdownProps> = ({ user, onLogout, onSettings }) => {
         type="button"
       >
         <img
-          src={user.profileImage || ''}
+          src={user.profileImage || AvaterPlaceholder}
           alt={user.name}
           className="w-8 h-8 rounded-full border"
         />
