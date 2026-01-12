@@ -317,7 +317,7 @@ function HomePage() {
       </Modal>
       <div className="min-h-screen bg-gray-50">
         {/* Navigation */}
-        <nav className="bg-white shadow-sm">
+        <nav>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex-shrink-0">
@@ -385,63 +385,63 @@ function HomePage() {
           { hasUserSubmittedData && <DailyUserMood userModeData={userModeData.slice(-1)[0]} /> }
 
           {/* Mood History Section */}
-        {userModeData && userModeData?.length < 5 && <div className="mt-12 flex flex-col md:flex-row gap-6">
-          <div className="md:w-1/3 w-full bg-white rounded-lg shadow-sm p-6">
-            {/* Left column content */}
-           <div className="flex flex-col gap-2 mb-8">
-           <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Average Mood <small className="text-xs sm:text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
-            <div className="flex items-start justify-between flex-col gap-2 bg-indigo-50 p-8 rounded-xl">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Keep tracking!</h2>
-                <h6 className="text-xs sm:text-sm md:text-base text-gray-500">Log 5 check-ins to see your average mood.</h6>
-            </div>
-           </div>
-           <div className="flex flex-col gap-2">
-           <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Average Sleep <small className="text-xs sm:text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
-            <div className="flex items-start justify-between flex-col gap-2 bg-indigo-50 p-8 rounded-xl">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Not enough data yet!</h2>
-                <h6 className="text-xs sm:text-sm md:text-base text-gray-500">Track 5 nights to view average sleep.</h6>
-            </div>
-           </div>
-          </div>
-          <div className="md:w-2/3 w-full bg-white rounded-lg shadow-sm p-6">
-            {/* Right column content */}
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2">Mood and sleep trends</h3>
-            <Chart data={chartSeries} options={chartOptions} />
-          </div>
-        </div>}
-        {userModeData && userModeData?.length > 4 && <div className="mt-12 flex flex-col md:flex-row gap-6">
-          <div className="md:w-1/3 w-full bg-white rounded-lg shadow-sm p-6">
-            {/* Left column content */}
-           <div className="flex flex-col gap-2 mb-8">
-           <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Average Mood <small className="text-xs sm:text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
-            <div 
-              className="flex items-start justify-between flex-col gap-2 p-8 rounded-xl"
-              style={{ backgroundColor: moodColorMap[averageMood as unknown as keyof typeof moodColorMap] }}
-            >
-              <div className="flex items-center gap-4 mb-2">
-                <img src={moodIconMap[averageMood as unknown as keyof typeof moodIconMap]} alt={moodMap[averageMood as unknown as keyof typeof moodMap]} className="w-6 h-6" />
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">{moodMap[averageMood as unknown as keyof typeof moodMap]}</h2>
+          {userModeData && userModeData?.length < 5 && <div className="mt-12 flex flex-col md:flex-row gap-6">
+            <div className="md:w-1/3 w-full bg-white rounded-lg shadow-sm p-6">
+              {/* Left column content */}
+            <div className="flex flex-col gap-2 mb-8">
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Average Mood <small className="text-xs sm:text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
+              <div className="flex items-start justify-between flex-col gap-2 bg-indigo-50 p-8 rounded-xl">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Keep tracking!</h2>
+                  <h6 className="text-xs sm:text-sm md:text-base text-gray-500">Log 5 check-ins to see your average mood.</h6>
               </div>
-                <h6 className="text-xs sm:text-sm md:text-base">Log 5 check-ins to see your average mood.</h6>
             </div>
-           </div>
-           <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
             <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Average Sleep <small className="text-xs sm:text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
-              <div className="flex items-start justify-between flex-col gap-2 bg-indigo-500 p-8 rounded-xl">
-                  <div className="flex items-center gap-4 mb-2">
-                    <img src={iconSleep} alt="Sleep" className="w-6 h-6" />
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{averageSleep} Hours</h2>
-                  </div>
-                  <h6 className="text-xs sm:text-sm md:text-base text-gray-200">Track 5 nights to view average sleep.</h6>
+              <div className="flex items-start justify-between flex-col gap-2 bg-indigo-50 p-8 rounded-xl">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Not enough data yet!</h2>
+                  <h6 className="text-xs sm:text-sm md:text-base text-gray-500">Track 5 nights to view average sleep.</h6>
               </div>
-           </div>
-          </div>
-          <div className="md:w-2/3 w-full bg-white rounded-lg shadow-sm p-6">
-            {/* Right column content */}
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2">Mood and sleep trends</h3>
-            <Chart data={chartSeries} options={chartOptions} />
-          </div>
-        </div>}
+            </div>
+            </div>
+            <div className="md:w-2/3 w-full bg-white rounded-lg shadow-sm p-6">
+              {/* Right column content */}
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2">Mood and sleep trends</h3>
+              <Chart data={chartSeries} options={chartOptions} />
+            </div>
+          </div>}
+          {userModeData && userModeData?.length > 4 && <div className="mt-12 flex flex-col md:flex-row gap-6">
+            <div className="md:w-1/3 w-full bg-white rounded-lg shadow-sm p-6">
+              {/* Left column content */}
+            <div className="flex flex-col gap-2 mb-8">
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Average Mood <small className="text-xs sm:text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
+              <div 
+                className="flex items-start justify-between flex-col gap-2 p-8 rounded-xl"
+                style={{ backgroundColor: moodColorMap[averageMood as unknown as keyof typeof moodColorMap] }}
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <img src={moodIconMap[averageMood as unknown as keyof typeof moodIconMap]} alt={moodMap[averageMood as unknown as keyof typeof moodMap]} className="w-6 h-6" />
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">{moodMap[averageMood as unknown as keyof typeof moodMap]}</h2>
+                </div>
+                  <h6 className="text-xs sm:text-sm md:text-base">Log 5 check-ins to see your average mood.</h6>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Average Sleep <small className="text-xs sm:text-sm text-gray-500">(Last 5 Check-ins)</small></h3>
+                <div className="flex items-start justify-between flex-col gap-2 bg-indigo-500 p-8 rounded-xl">
+                    <div className="flex items-center gap-4 mb-2">
+                      <img src={iconSleep} alt="Sleep" className="w-6 h-6" />
+                      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{averageSleep} Hours</h2>
+                    </div>
+                    <h6 className="text-xs sm:text-sm md:text-base text-gray-200">Track 5 nights to view average sleep.</h6>
+                </div>
+            </div>
+            </div>
+            <div className="md:w-2/3 w-full bg-white rounded-lg shadow-sm p-6">
+              {/* Right column content */}
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2">Mood and sleep trends</h3>
+              <Chart data={chartSeries} options={chartOptions} />
+            </div>
+          </div>}
         </main>
       </div>
     </>
