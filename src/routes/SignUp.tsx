@@ -47,7 +47,7 @@ function SignUp() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center flex-col gap-10 bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center flex-col gap-10 bg-gray-50 p-4">
       <div>
         <img src={logo} alt="logo" />
       </div>

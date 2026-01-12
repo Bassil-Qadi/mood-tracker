@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react'
+import { type ReactNode, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 import { ToastContainer } from 'react-toastify'
@@ -7,6 +7,7 @@ import HomePage from './routes/HomePage'
 import Login from './routes/Login'
 import SignUp from './routes/SignUp'
 import { useAuth } from './context/authContext'
+import LogoAnimation from './components/UI/LogoAnimation'
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { isAuthenticated, loading } = useAuth()
@@ -23,24 +24,38 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
 }
 
 function App() {
+  const [showLogoAnimation, setShowLogoAnimation] = useState(true)
+
+  const handleAnimationComplete = () => {
+    setShowLogoAnimation(false)
+  }
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <HomePage />
-            </ProtectedRoute>
-          }
+    <>
+      {showLogoAnimation && (
+        <LogoAnimation 
+          onComplete={handleAnimationComplete} 
+          duration={2000}
         />
-        <Route path="*" element={<Navigate to="/login" replace />} />
-      </Routes>
-      <ToastContainer position="top-right" newestOnTop closeOnClick pauseOnHover />
-    </Router>
+      )}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+        <ToastContainer position="top-right" newestOnTop closeOnClick pauseOnHover />
+      </Router>
+    </>
   )
 }
 
